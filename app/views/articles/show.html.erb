@@ -5,7 +5,7 @@
  
 <p>
   <strong>Text:</strong>
-  <%= @article.text %>
+  <%= h(@article.text).gsub(/(\r\n|\r|\n)/, "<br />").html_safe %>
 </p>
 
 <h2>Comments</h2>

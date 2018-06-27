@@ -3,7 +3,10 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
   def index
+    logger.debug("テストのログです")
     @articles = Article.all
+#    @articles = @articles.page(params[:page]) 
+    @articles = @articles.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
